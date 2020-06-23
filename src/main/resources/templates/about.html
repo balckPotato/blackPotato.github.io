@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <!--设置移动端的预览-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+    <!--引入css格式-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <!--引入自定义css格式-->
+    <link rel="stylesheet" href="../static/css/my.css">
+</head>
+<body>
+
+<!--导航-->
+<!--m开头代表自定义css-->
+<nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">BlackPotato's blog</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i> 首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i> 归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i> 分类</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i> 标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i> 关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!--中间内容-->
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="eleven wide column">
+                <div class="ui segment">
+                    <img src="https://unsplash.it/800/600?image=1041" alt="" class="ui rounded image">
+                </div>
+            </div>
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment">
+                    <p class="m-text-thin">本人在校大学生一枚，会定期分享自己的一些学习过程，以及学习过程中遇到bug的解决办法。</p>
+                    <p class="m-text-thin">本博客内容涉及python、java等后端以及数据分析处理和算法方面，如有问题，欢迎大家扣我，大家一起学习交流。</p>
+                </div>
+                <div class="ui attached segment">
+
+                    <div class="ui orange basic left pointing label m-margin-tb-tiny" th:each="type : ${types}">
+                        <a href="#" th:href="@{/types/{id}(id=${type.id})}" target="_blank" class="item">
+                            <span th:text="${type.name}">python</span>
+                        </a>
+                    </div>
+<!--                    <div class="ui orange basic left pointing label m-margin-tb-tiny">编程</div>-->
+<!--                    <div class="ui orange basic left pointing label m-margin-tb-tiny">编程</div>-->
+<!--                    <div class="ui orange basic left pointing label m-margin-tb-tiny">编程</div>-->
+                </div>
+                <div class="ui attached segment">
+
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny" th:each="tag : ${tags}">
+                        <a href="#" th:href="@{/tags/{id}(id=${tag.id})}" target="_blank">
+                            <span th:text="${tag.name}">Ubuntu</span>
+                        </a>
+                    </div>
+                    <div class="ui teal basic left pointing label m-margin-tb-tiny">
+                        <a href="#" th:href="@{tags/-1}" target="_blank">... </a>
+                    </div>
+<!--                    <div class="ui teal basic left pointing label m-margin-tb-tiny">python</div>-->
+<!--                    <div class="ui teal basic left pointing label m-margin-tb-tiny">mysql</div>-->
+<!--                    <div class="ui teal basic left pointing label m-margin-tb-tiny">linux</div>-->
+<!--                    <div class="ui teal basic left pointing label m-margin-tb-tiny">node</div>-->
+<!--                    <div class="ui teal basic left pointing label m-margin-tb-tiny">JavaScript</div>-->
+
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="https://github.com/smallBlackPotato?tab=repositories" class="ui circular icon button"><i class="github icon"></i></a>
+                    <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+                    <a href="#" class="ui qq circular icon button" data-content="1748887495" data-position="bottom center"><i class="qq icon"></i></a>
+                </div>
+                <div class="ui wechat-qr flowing popup transition hidden">
+                    <img src="../static/images/wechat.png" th:src="@{/images/wechat.png}" alt="" class="ui rounded image" style="width: 100px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<!--底部footer-->
+<footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/wechat.png" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email: 1748887495@qq.com</a>
+                    <a href="#" class="item">QQ: 1748887495</a>
+                    <a href="#" class="item">用户故事（User Story）</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">BlackPotato</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客、会分享关于编程、计算机相关的内容，希望可以对大家有所帮助</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">Copyright © 2020 BlackPotato Designed by BlackPotato</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.wechat').popup({
+        popup : $('.wechat-qr'),
+        position: 'bottom center'
+    });
+
+    $('.qq').popup();
+
+</script>
+</body>
+</html>
